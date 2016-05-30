@@ -1,3 +1,6 @@
+from mod_inverse import mod_inverse
+
+
 def gcd(a, b):
     """
     returns largest integer which divides both a and b 
@@ -49,3 +52,23 @@ def modular_linear_solver(a, b, n):
         for i in range (d):
             solutions.append( (x + i*(n//d) ) % n )
     return sorted(solutions)
+
+
+def linear_diophantine(a, b, c):
+    """
+    Find (x, y) such that ax + by = c 
+
+    >>> linear_diophantine(2, 3, 11)
+    (22, -11)
+
+    >>> linear_diophantine(2, 4, 11)
+    ()
+
+    """
+    d = gcd(a, b)
+    if c%d:
+        return ()
+    else:
+        x = (c//d)*mod_inverse(a//d, b//d)
+        y = (c-a*x)//b
+        return (x, y)

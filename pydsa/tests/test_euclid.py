@@ -1,5 +1,4 @@
-from pydsa.euclid import extended_euclid
-from pydsa.euclid import gcd, modular_linear_solver
+from pydsa.euclid import gcd, modular_linear_solver, extended_euclid, linear_diophantine
 
 def test_gcd():
     assert gcd(4, 10) == 2
@@ -20,4 +19,10 @@ def test_modular_linear_solver():
     assert modular_linear_solver(51, 54, 99) == [3, 36, 69]
     assert modular_linear_solver(20, 68, 12) == [1, 4, 7, 10]
     assert modular_linear_solver(40, 15, 95) == [17, 36, 55, 74,93]
+
+def test_linear_diophantine():
+    assert linear_diophantine(26, 13, 65) == (-5, 15)
+    assert linear_diophantine(7, 8, 15) == (105, -90)
+    assert linear_diophantine(12, 13, 125) == (1500, -1375)
+    assert linear_diophantine(12, 16, 20) == (15, -10)
 
