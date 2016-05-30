@@ -45,7 +45,7 @@ def modular_linear_solver(a, b, n):
     solutions = []
     d, x, y = extended_euclid(a, n)
     if b % d == 0 :
-        x = (x*(b/d)) % n
+        x = (x*(b//d)) % n
         for i in range (d):
-            solutions.append( (x + i*(n/d) ) % n )
+            solutions.append( (x + i*(n//d) ) % n )
     return sorted(solutions)
